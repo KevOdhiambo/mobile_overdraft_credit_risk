@@ -377,6 +377,32 @@ Credit Providers Act 2022), not these proxies alone.
 Python · LightGBM · SHAP · FastAPI · Docker · AWS Lambda · API Gateway ·
 S3 · EventBridge · GitHub Actions · pytest
 
+## Acronym glossary
+
+| Acronym | Meaning |
+|---|---|
+| AUC | Area Under the ROC Curve — threshold-free discrimination metric (0.5 = random, 1.0 = perfect) |
+| CBK | Central Bank of Kenya |
+| CI/CD | Continuous Integration / Continuous Delivery |
+| CRB | Credit Reference Bureau — Kenya's credit bureau system; a negative CRB listing indicates a past default |
+| DGP | Data Generating Process — the synthetic simulation code that produced the dataset |
+| DI | Disparate Impact — approval-rate ratio between disadvantaged and reference group; must stay ≥ 0.80 (four-fifths rule) |
+| FN | False Negative — a defaulter the model approved (missed default) |
+| FNR | False Negative Rate — FN / (FN + TP); fraction of actual defaults the model misses |
+| FP | False Positive — a non-defaulter the model flagged (wrong denial) |
+| FPR | False Positive Rate — FP / (FP + TN); fraction of actual non-defaults the model flags |
+| KES | Kenyan Shilling |
+| LGD | Loss Given Default — the fraction of the outstanding balance lost when a borrower defaults |
+| OIR | Overdraw-to-Inflow Ratio — outstanding draw / expected daily inflow; the strongest risk signal in the feature set |
+| OOT | Out-of-Time — the held-out test period (≥ 2024-01-01) used to measure forward generalisation |
+| PD | Probability of Default — the model's calibrated output score |
+| PR-AUC | Area Under the Precision-Recall Curve — preferred metric under class imbalance |
+| ROC | Receiver Operating Characteristic — the TPR vs FPR curve across all thresholds |
+| SHAP | SHapley Additive exPlanations — the framework used to generate per-prediction feature attributions and adverse-action reason codes |
+| TN | True Negative — a non-defaulter the model correctly approved |
+| TP | True Positive — a defaulter the model correctly flagged |
+| USSD | Unstructured Supplementary Service Data — the `*334#` dial-code interface used to access M-PESA services |
+
 ## License
 
 MIT — see [LICENSE](LICENSE). Use freely; just don't claim this is real
