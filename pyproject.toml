@@ -1,0 +1,51 @@
+[project]
+name = "mobile-overdraft-credit-risk"
+version = "1.0.0"
+description = "End-to-end alternative-data PD model for mobile-money overdraft lending"
+requires-python = ">=3.11"
+dependencies = [
+    "numpy>=2.0,<2.3",
+    "pandas>=2.2",
+    "lightgbm>=4.3",
+    "scikit-learn>=1.4",
+    "shap>=0.51.0",
+    "matplotlib>=3.8",
+    "fastapi>=0.100",
+    "uvicorn[standard]>=0.23",
+    "pydantic>=2.7",
+    "boto3>=1.34",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4",
+    "black>=24.0",
+    "ruff>=0.4",
+    "mypy>=1.10",
+    "pandas-stubs",
+]
+
+[tool.black]
+line-length = 100
+target-version = ["py311"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "UP", "B", "C4", "SIM"]
+ignore = [
+    "E501",   # line-length enforced by black
+]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]

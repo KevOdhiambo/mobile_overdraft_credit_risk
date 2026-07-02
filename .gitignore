@@ -1,0 +1,32 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+.DS_Store
+
+# Data generation scripts — not part of the committed project
+src/data_generation/
+scripts/
+
+# Generated/processed data (committed dataset is the exception below)
+data/raw/*.csv
+data/processed/*.csv
+data/processed/*.json
+!data/raw/overdraft_lending_data.csv
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+
+# Model artifacts — exclude scratch/temp but keep trained outputs
+models/*.pkl
+!models/calibrator.pkl
+!models/.gitkeep
+
+# Keep trained model and result files
+# (metrics.json, fairness_report.json, validation_report.json,
+#  model.txt, feature_importance.png, sample_reason_codes.json
+#  are all intentionally committed)
+
+.env
+*.log

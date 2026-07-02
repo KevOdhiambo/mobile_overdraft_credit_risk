@@ -1,0 +1,46 @@
+{
+  "tenure_proxy": {
+    "thin_file": {
+      "n": 4889,
+      "n_true_negative": 4076,
+      "n_true_positive": 176,
+      "approval_rate": 0.8787,
+      "fpr": 0.0928,
+      "fnr": 0.5556
+    },
+    "established": {
+      "n": 37436,
+      "n_true_negative": 30770,
+      "n_true_positive": 1491,
+      "approval_rate": 0.8678,
+      "fpr": 0.101,
+      "fnr": 0.5352
+    },
+    "disparate_impact_ratio": 1.0126,
+    "fpr_ratio": 0.9188,
+    "fnr_ratio": 1.0381,
+    "fails_four_fifths_rule": false
+  },
+  "crb_flag_proxy": {
+    "crb_flagged": {
+      "n": 2268,
+      "n_true_negative": 1820,
+      "n_true_positive": 83,
+      "approval_rate": 0.8576,
+      "fpr": 0.1165,
+      "fnr": 0.601
+    },
+    "crb_clean": {
+      "n": 40057,
+      "n_true_negative": 33026,
+      "n_true_positive": 1584,
+      "approval_rate": 0.8697,
+      "fpr": 0.0992,
+      "fnr": 0.5336
+    },
+    "disparate_impact_ratio": 0.9861,
+    "fpr_ratio": 1.1744,
+    "fnr_ratio": 1.1263,
+    "fails_four_fifths_rule": false
+  }
+}

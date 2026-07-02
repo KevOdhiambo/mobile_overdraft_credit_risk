@@ -1,0 +1,11 @@
+numpy>=2.0,<2.3
+pandas>=2.2
+lightgbm>=4.3
+scikit-learn>=1.4
+shap>=0.51.0
+matplotlib>=3.8
+fastapi>=0.100
+uvicorn[standard]>=0.23
+pydantic>=2.7
+pytest>=7.4
+boto3>=1.34

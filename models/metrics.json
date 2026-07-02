@@ -1,0 +1,109 @@
+{
+  "auc": 0.7936,
+  "pr_auc": 0.3019,
+  "brier_score": 0.0679,
+  "default_rate_actual": 0.0852,
+  "configured_threshold": {
+    "threshold": 0.3,
+    "precision": 0.4439,
+    "recall": 0.2073,
+    "f1": 0.2826,
+    "flag_rate": 0.0398,
+    "confusion_matrix": {
+      "tn": 37785,
+      "fp": 936,
+      "fn": 2857,
+      "tp": 747
+    },
+    "rationale": "lender-conservative: maximises recall at cost of precision; appropriate when loss_given_default >> cost_of_foregone_loan"
+  },
+  "deployment_threshold": {
+    "threshold": 0.17434210526315788,
+    "precision": 0.3008,
+    "recall": 0.4625,
+    "f1": 0.3645,
+    "flag_rate": 0.1309,
+    "confusion_matrix": {
+      "tn": 34846,
+      "fp": 3875,
+      "fn": 1937,
+      "tp": 1667
+    },
+    "derivation": "val-set min expected cost (C_fp=0.20, C_fn=1.00); test set never consulted for threshold selection",
+    "cost_config": {
+      "cost_fp": 0.2,
+      "cost_fn": 1.0,
+      "bayes_optimal_threshold": 0.166667
+    }
+  },
+  "calibration_table": [
+    {
+      "bin": "(-0.001, 0.0131]",
+      "n": 6300,
+      "mean_predicted": 0.0086,
+      "actual_default_rate": 0.0117
+    },
+    {
+      "bin": "(0.0131, 0.016]",
+      "n": 4678,
+      "mean_predicted": 0.016,
+      "actual_default_rate": 0.0203
+    },
+    {
+      "bin": "(0.016, 0.0251]",
+      "n": 2179,
+      "mean_predicted": 0.0241,
+      "actual_default_rate": 0.0257
+    },
+    {
+      "bin": "(0.0251, 0.0282]",
+      "n": 5961,
+      "mean_predicted": 0.0282,
+      "actual_default_rate": 0.0332
+    },
+    {
+      "bin": "(0.0282, 0.0471]",
+      "n": 3163,
+      "mean_predicted": 0.0432,
+      "actual_default_rate": 0.0509
+    },
+    {
+      "bin": "(0.0471, 0.0592]",
+      "n": 3576,
+      "mean_predicted": 0.0574,
+      "actual_default_rate": 0.0543
+    },
+    {
+      "bin": "(0.0592, 0.083]",
+      "n": 5284,
+      "mean_predicted": 0.0804,
+      "actual_default_rate": 0.0757
+    },
+    {
+      "bin": "(0.083, 0.113]",
+      "n": 2799,
+      "mean_predicted": 0.1056,
+      "actual_default_rate": 0.1154
+    },
+    {
+      "bin": "(0.113, 0.187]",
+      "n": 4604,
+      "mean_predicted": 0.1553,
+      "actual_default_rate": 0.1733
+    },
+    {
+      "bin": "(0.187, 1.0]",
+      "n": 3781,
+      "mean_predicted": 0.3366,
+      "actual_default_rate": 0.3451
+    }
+  ],
+  "train_val_check": {
+    "split_mode": "temporal-OOT",
+    "best_iteration": 53,
+    "train_auc": 0.8244,
+    "val_auc": 0.7965,
+    "gap": 0.0279,
+    "note": "Small gap expected with regularisation; OOT AUC is the forward-generalisation check"
+  }
+}

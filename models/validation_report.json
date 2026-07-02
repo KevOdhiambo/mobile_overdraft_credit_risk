@@ -1,0 +1,110 @@
+{
+  "passed": true,
+  "run_at": "2026-07-01T21:05:58.967936+00:00",
+  "n_checks": 9,
+  "n_errors": 0,
+  "n_warnings": 0,
+  "checks": [
+    {
+      "name": "model.auc",
+      "passed": true,
+      "severity": "info",
+      "message": "AUC=0.7936 >= min=0.65",
+      "details": {
+        "auc": 0.7936,
+        "min_auc": 0.65
+      }
+    },
+    {
+      "name": "model.train_oot_gap",
+      "passed": true,
+      "severity": "info",
+      "message": "Train-OOT AUC gap=0.0308 (train=0.8244, OOT=0.7936)",
+      "details": {
+        "train_auc": 0.8244,
+        "oot_auc": 0.7936,
+        "gap": 0.0308,
+        "max_gap": 0.15
+      }
+    },
+    {
+      "name": "fairness.di.thin_file",
+      "passed": true,
+      "severity": "info",
+      "message": "DI(1/0)=1.0126 >= 0.8",
+      "details": {
+        "di": 1.0126,
+        "approval_a": 0.8787,
+        "approval_b": 0.8678,
+        "di_lower_bound": 0.8
+      }
+    },
+    {
+      "name": "fairness.fpr_ratio.thin_file",
+      "passed": true,
+      "severity": "info",
+      "message": "FPR ratio(1/0)=0.9187 (a=0.0928, b=0.1010)",
+      "details": {
+        "fpr_ratio": 0.9187,
+        "fpr_a": 0.0928,
+        "fpr_b": 0.101,
+        "max_fpr_ratio": 2.0
+      }
+    },
+    {
+      "name": "fairness.fnr_ratio.thin_file",
+      "passed": true,
+      "severity": "info",
+      "message": "FNR ratio(1/0)=1.0380 (a=0.5556, b=0.5352)",
+      "details": {
+        "fnr_ratio": 1.038,
+        "fnr_a": 0.5556,
+        "fnr_b": 0.5352,
+        "max_fnr_ratio": 2.0
+      }
+    },
+    {
+      "name": "fairness.di.crb_flagged",
+      "passed": true,
+      "severity": "info",
+      "message": "DI(1/0)=0.9861 >= 0.8",
+      "details": {
+        "di": 0.9861,
+        "approval_a": 0.8576,
+        "approval_b": 0.8697,
+        "di_lower_bound": 0.8
+      }
+    },
+    {
+      "name": "fairness.fpr_ratio.crb_flagged",
+      "passed": true,
+      "severity": "info",
+      "message": "FPR ratio(1/0)=1.1750 (a=0.1165, b=0.0992)",
+      "details": {
+        "fpr_ratio": 1.175,
+        "fpr_a": 0.1165,
+        "fpr_b": 0.0992,
+        "max_fpr_ratio": 2.0
+      }
+    },
+    {
+      "name": "fairness.fnr_ratio.crb_flagged",
+      "passed": true,
+      "severity": "info",
+      "message": "FNR ratio(1/0)=1.1263 (a=0.6010, b=0.5336)",
+      "details": {
+        "fnr_ratio": 1.1263,
+        "fnr_a": 0.601,
+        "fnr_b": 0.5336,
+        "max_fnr_ratio": 2.0
+      }
+    },
+    {
+      "name": "leakage.forbidden_features",
+      "passed": true,
+      "severity": "info",
+      "message": "No forbidden features present in model feature list",
+      "details": {}
+    }
+  ]
+}

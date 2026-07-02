@@ -1,0 +1,73 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test-and-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run unit tests
+        run: PYTHONPATH=. pytest tests/ -v
+
+      - name: Build features (data validation gate)
+        run: python -m src.features.build_features --in_path data/raw/overdraft_lending_data.csv --out_dir data/processed
+
+      - name: Train model
+        run: python -m src.models.train --features data/processed/features.csv
+
+      - name: Fairness gate -- fail build if four-fifths rule is violated
+        run: |
+          python -c "
+          import json, sys
+          report = json.load(open('models/fairness_report.json'))
+          failed = [g for g, r in report.items() if r['fails_four_fifths_rule']]
+          if failed:
+              print(f'FAIRNESS GATE FAILED: {failed}')
+              sys.exit(1)
+          print('Fairness gate passed.')
+          "
+
+      - name: Minimum AUC gate
+        run: |
+          python -c "
+          import json, sys
+          m = json.load(open('models/metrics.json'))
+          if m['auc'] < 0.65:
+              print(f'AUC gate failed: {m[\"auc\"]}')
+              sys.exit(1)
+          print(f'AUC gate passed: {m[\"auc\"]}')
+          "
+
+      - name: Upload model artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: model-artifacts
+          path: models/
+
+  docker-build:
+    needs: test-and-validate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download model artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: model-artifacts
+          path: models/
+      - name: Build Docker image
+        run: docker build -t overdraft-credit-risk:ci .
